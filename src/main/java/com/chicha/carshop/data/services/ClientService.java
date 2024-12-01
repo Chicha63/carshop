@@ -2,10 +2,12 @@ package com.chicha.carshop.data.services;
 
 import com.chicha.carshop.data.Client;
 import com.chicha.carshop.data.repos.ClientRepository;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
 
+@Service
 public class ClientService {
     private final ClientRepository clientRepository;
 

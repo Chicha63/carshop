@@ -2,10 +2,12 @@ package com.chicha.carshop.data.services;
 
 import com.chicha.carshop.data.Employee;
 import com.chicha.carshop.data.repos.EmployeeRepository;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
 
+@Service
 public class EmployeeService {
     private EmployeeRepository employeeRepository;
     public EmployeeService(EmployeeRepository employeeRepository) {
@@ -16,7 +18,7 @@ public class EmployeeService {
         return employeeRepository.save(employee);
     }
 
-    List<Employee> getAllEmployees() {
+    public List<Employee> getAllEmployees() {
         return employeeRepository.findAll();
     }
 

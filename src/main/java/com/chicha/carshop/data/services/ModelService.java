@@ -2,9 +2,11 @@ package com.chicha.carshop.data.services;
 
 import com.chicha.carshop.data.Model;
 import com.chicha.carshop.data.repos.ModelRepository;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+@Service
 public class ModelService {
     ModelRepository modelRepository;
     public ModelService(ModelRepository modelRepository) {

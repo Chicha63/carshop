@@ -2,9 +2,11 @@ package com.chicha.carshop.data.services;
 
 import com.chicha.carshop.data.Good;
 import com.chicha.carshop.data.repos.GoodRepository;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+@Service
 public class GoodService {
     GoodRepository goodRepository;
     public GoodService(GoodRepository goodRepository) {

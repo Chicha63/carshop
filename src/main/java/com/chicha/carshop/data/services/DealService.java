@@ -2,9 +2,11 @@ package com.chicha.carshop.data.services;
 
 import com.chicha.carshop.data.Deal;
 import com.chicha.carshop.data.repos.DealRepository;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+@Service
 public class DealService {
     DealRepository repository;
     public DealService(DealRepository repository) {

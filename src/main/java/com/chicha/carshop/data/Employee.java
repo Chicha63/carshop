@@ -18,11 +18,11 @@ public class Employee {
     private Integer id;
 
     @Column(nullable = false, length = 100)
-    private String fullName;
+    private String fullname;
 
     @ManyToOne
-    @JoinColumn(name = "AccessRight_Id", nullable = false)
-    private AccessRight accessRight;
+    @JoinColumn(name = "Accessright_Id", nullable = false)
+    private AccessRight accessright;
 
     @Column(nullable = false, length = 50)
     private String email;
