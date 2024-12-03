@@ -13,19 +13,19 @@ public class ModelService {
         this.modelRepository = modelRepository;
     }
 
-    Model save(Model model) {
+    public Model save(Model model) {
         return modelRepository.save(model);
     }
-    List<Model> findAll() {
+    public List<Model> findAll() {
         return modelRepository.findAll();
     }
-    Model findById(int id) {
+    public Model findById(int id) {
         return modelRepository.findById(id).orElse(null);
     }
-    void delete(int id) {
+    public void delete(int id) {
         modelRepository.deleteById(id);
     }
-    Model update(Model newModel, int id) {
+    public Model update(Model newModel, int id) {
         return modelRepository.findById(id)
                 .map(model -> {
                     model = newModel;

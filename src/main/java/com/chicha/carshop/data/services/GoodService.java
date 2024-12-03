@@ -13,16 +13,16 @@ public class GoodService {
         this.goodRepository = goodRepository;
     }
 
-    Good save(Good good) {
+    public Good save(Good good) {
         return goodRepository.save(good);
     }
-    List<Good> findAll() {
+    public List<Good> findAll() {
         return goodRepository.findAll();
     }
-    Good findById(int id) {
+    public Good findById(int id) {
         return goodRepository.findById(id).orElse(null);
     }
-    Good update(Good newGood, int id) {
+    public Good update(Good newGood, int id) {
         return goodRepository.findById(id)
                 .map(good -> {
                     good = newGood;
@@ -30,7 +30,7 @@ public class GoodService {
                 })
                 .orElse(goodRepository.save(newGood));
     }
-    void delete(int id) {
+    public void delete(int id) {
         goodRepository.deleteById(id);
     }
 }

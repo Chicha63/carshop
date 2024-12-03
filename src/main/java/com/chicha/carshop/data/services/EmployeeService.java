@@ -14,7 +14,7 @@ public class EmployeeService {
         this.employeeRepository = employeeRepository;
     }
 
-    Employee saveEmployee(Employee employee) {
+    public Employee saveEmployee(Employee employee) {
         return employeeRepository.save(employee);
     }
 
@@ -22,11 +22,11 @@ public class EmployeeService {
         return employeeRepository.findAll();
     }
 
-    Optional<Employee> getEmployeeById(int id) {
+    public Optional<Employee> getEmployeeById(int id) {
         return employeeRepository.findById(id);
     }
 
-    Employee updateEmployee(Employee newEmployee, int id) {
+    public Employee updateEmployee(Employee newEmployee, int id) {
         return employeeRepository.findById(id)
                 .map(employee -> {
                     employee = newEmployee;

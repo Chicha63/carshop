@@ -13,19 +13,19 @@ public class DealService {
         this.repository = repository;
     }
 
-    List<Deal> findAll() {
+    public List<Deal> findAll() {
         return repository.findAll();
     }
 
-    Deal findById(int id) {
+    public Deal findById(int id) {
         return repository.findById(id).orElse(null);
     }
 
-    Deal save(Deal deal) {
+    public Deal save(Deal deal) {
         return repository.save(deal);
     }
 
-    Deal update(Deal newDeal, int id) {
+    public Deal update(Deal newDeal, int id) {
         return repository.findById(id)
                 .map(deal -> {
                     deal = newDeal;
@@ -34,7 +34,7 @@ public class DealService {
                 .orElseGet(()-> repository.save(newDeal));
     }
 
-    void deleteById(int id) {
+    public void deleteById(int id) {
         repository.deleteById(id);
     }
 }

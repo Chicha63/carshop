@@ -6,13 +6,12 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 @Controller
-@RequestMapping(value = "/api")
+@RequestMapping("/api")
 @RequiredArgsConstructor
 public class CarshopController {
     private final EmployeeService employeeService;
@@ -22,4 +21,13 @@ public class CarshopController {
         return new ResponseEntity<>(employeeService.getAllEmployees(), HttpStatus.OK);
     }
 
+    @PostMapping(value = "/employees/add")
+    public ResponseEntity<Employee> addEmployee(@RequestBody Employee employee) {
+        return new ResponseEntity<>(employeeService.saveEmployee(employee), HttpStatus.CREATED);
+    }
+
+    @PutMapping(value = "/employees/update/{id}")
+    public ResponseEntity<Employee> updateEmployee(@RequestBody Employee employee, @RequestParam int id) {
+        return new ResponseEntity<>(employeeService.updateEmployee(employee, id), HttpStatus.OK);
+    }
 }
