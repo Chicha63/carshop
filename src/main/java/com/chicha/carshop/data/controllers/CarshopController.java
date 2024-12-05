@@ -1,4 +1,4 @@
-package com.chicha.carshop.data.controller;
+package com.chicha.carshop.data.controllers;
 
 import com.chicha.carshop.data.Employee;
 import com.chicha.carshop.data.services.EmployeeService;
@@ -26,8 +26,4 @@ public class CarshopController {
         return new ResponseEntity<>(employeeService.saveEmployee(employee), HttpStatus.CREATED);
     }
 
-    @PutMapping(value = "/employees/update/{id}")
-    public ResponseEntity<Employee> updateEmployee(@RequestBody Employee employee, @RequestParam int id) {
-        return new ResponseEntity<>(employeeService.updateEmployee(employee, id), HttpStatus.OK);
-    }
 }

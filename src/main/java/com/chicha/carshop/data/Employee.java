@@ -14,20 +14,20 @@ import lombok.*;
 public class Employee {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column
+    @Column(name = "Id")
     private Integer id;
 
-    @Column(nullable = false, length = 100)
+    @Column(name = "FullName", nullable = false, length = 100)
     private String fullname;
 
     @ManyToOne
-    @JoinColumn(name = "Accessright_Id", nullable = false)
-    private AccessRight accessright;
+    @JoinColumn(name = "AccessRight_Id", nullable = false)
+    private Accessright accessright;
 
-    @Column(nullable = false, length = 50)
+    @Column(name = "Email", nullable = false, length = 50)
     private String email;
 
-    @Column(nullable = false, length = 1000)
+    @Column(name = "Password", nullable = false, length = 1000)
     private String password;
 
     // Getters and Setters
