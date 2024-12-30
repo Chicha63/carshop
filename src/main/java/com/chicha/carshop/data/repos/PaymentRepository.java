@@ -1,11 +1,10 @@
 package com.chicha.carshop.data.repos;
 
-import com.chicha.carshop.data.Model;
+import com.chicha.carshop.data.enities.Payment;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface ModelRepository extends JpaRepository<Model, Integer> {
-
+public interface PaymentRepository extends JpaRepository<Payment, Integer> {
 
 }

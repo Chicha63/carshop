@@ -1,7 +1,9 @@
-package com.chicha.carshop.data;
+package com.chicha.carshop.data.enities;
+
 
 import jakarta.persistence.*;
 import lombok.*;
+
 
 @Data
 @Builder
@@ -10,13 +12,14 @@ import lombok.*;
 @Getter
 @Setter
 @Entity
-@Table(name = "Manufacturer")
-public class Manufacturer {
+@Table(name = "AccessRight")
+public class Accessright {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "Id")
     private Integer id;
 
-    @Column(nullable = false, length = 50)
+    @Column(name = "Name", nullable = false, length = 50)
     private String name;
 
     // Getters and Setters

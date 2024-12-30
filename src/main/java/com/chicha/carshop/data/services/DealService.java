@@ -1,40 +1,48 @@
 package com.chicha.carshop.data.services;
 
-import com.chicha.carshop.data.Deal;
+import com.chicha.carshop.data.enities.Client;
+import com.chicha.carshop.data.enities.Deal;
+import com.chicha.carshop.data.enities.Payment;
+import com.chicha.carshop.data.enities.Status;
 import com.chicha.carshop.data.repos.DealRepository;
+import com.chicha.carshop.data.repos.PaymentRepository;
+import org.apache.coyote.BadRequestException;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.NoSuchElementException;
 
 @Service
 public class DealService {
-    DealRepository repository;
-    public DealService(DealRepository repository) {
-        this.repository = repository;
+    @Autowired
+    DealRepository dealRepository;
+    @Autowired
+    private ClientService clientService;
+    @Autowired
+    private PaymentRepository paymentRepository;
+
+    public void cancelDeal(int dealId) {
+        Deal deal;
+        Client client = clientService.findByEmail((String)SecurityContextHolder.getContext().getAuthentication().getPrincipal());
+        try{
+            deal = dealRepository.findById(dealId).get();
+            if (client != deal.getClient()) {
+                throw new BadRequestException();
+            }
+        } catch (NoSuchElementException exception){
+            exception.printStackTrace();
+            return;
+        } catch (BadRequestException e) {
+            throw new RuntimeException("no such rights");
+        }
+        deal.setStatus(Status.builder().id(3).name("Canceled").build());
+        dealRepository.save(deal);
     }
 
-    public List<Deal> findAll() {
-        return repository.findAll();
+    public List<Payment> getPayments() {
+        return paymentRepository.findAll();
     }
 
-    public Deal findById(int id) {
-        return repository.findById(id).orElse(null);
-    }
-
-    public Deal save(Deal deal) {
-        return repository.save(deal);
-    }
-
-    public Deal update(Deal newDeal, int id) {
-        return repository.findById(id)
-                .map(deal -> {
-                    deal = newDeal;
-                    return repository.save(deal);
-                })
-                .orElseGet(()-> repository.save(newDeal));
-    }
-
-    public void deleteById(int id) {
-        repository.deleteById(id);
-    }
 }

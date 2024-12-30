@@ -1,4 +1,4 @@
-package com.chicha.carshop.data;
+package com.chicha.carshop.data.enities;
 
 import jakarta.persistence.*;
 import lombok.*;
@@ -31,4 +31,6 @@ public class Employee {
     private String password;
 
     // Getters and Setters
+
+//    public String getEmail()
 }

@@ -1,4 +1,4 @@
-package com.chicha.carshop.data;
+package com.chicha.carshop.data.enities;
 
 import jakarta.persistence.*;
 import lombok.*;
@@ -12,23 +12,19 @@ import java.io.Serializable;
 @Getter
 @Setter
 @Entity
-@Table(name = "PossibleColor")
 @IdClass(PossibleColorId.class)
 public class PossibleColor {
     @Id
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.EAGER, optional = false)
     @JoinColumn(name = "Model_Id", nullable = false)
     private Model model;
 
     @Id
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.EAGER, optional = false)
     @JoinColumn(name = "Color_Id", nullable = false)
     private Color color;
-
-    // Getters and Setters
 }
 
-// Composite Key Class
 class PossibleColorId implements Serializable {
     private Integer model;
     private Integer color;

@@ -1,23 +1,22 @@
-package com.chicha.carshop.data;
+package com.chicha.carshop.data.enities;
 
 import jakarta.persistence.*;
 import lombok.*;
 
-@Data
-@Builder
-@AllArgsConstructor
-@NoArgsConstructor
 @Getter
 @Setter
+@AllArgsConstructor
+@NoArgsConstructor
+@Builder
+@Data
 @Entity
-@Table(name = "Availability")
 public class Availability {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "Id", nullable = false)
     private Integer id;
 
-    @Column(nullable = false, length = 50)
+    @Column(name = "Type", nullable = false, length = 50)
     private String type;
 
-    // Getters and Setters
 }
